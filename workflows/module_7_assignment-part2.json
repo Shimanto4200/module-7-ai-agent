@@ -1,0 +1,103 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "path": "78b75eca-c8d8-4864-94a1-3b0c4e86ad73"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "YOUR_ID",
+      "name": "MCP Server Trigger",
+      "webhookId": "YOUR_WEBHOOK_ID"
+    },
+    {
+      "parameters": {
+        "actorSource": "store",
+        "actorId": {
+          "__rl": true,
+          "value": "GLe30YgAs5xqzNBQg",
+          "mode": "list",
+          "cachedResultName": "",
+          "cachedResultUrl": ""
+        },
+        "customBody": "{\n    \"enablePriceMonitoring\": false,\n    \"maxConcurrency\": 1,\n    \"maxRequestRetries\": 1,\n    \"minConcurrency\": 5,\n    \"monitoringMode\": false,\n    \"proxy\": {\n        \"useApifyProxy\": true,\n        \"apifyProxyGroups\": [\n            \"RESIDENTIAL\"\n        ],\n        \"apifyProxyCountry\": \"AE\"\n    },\n    \"startUrls\": [\n        \"https://www.bayut.com/for-sale/property/dubai/downtown-dubai/\",\n        \"https://www.bayut.com/for-sale/property/dubai/dubai-hills-estate/\"\n    ]\n}",
+        "authentication": "apifyOAuth2Api"
+      },
+      "type": "@apify/n8n-nodes-apify.apifyTool",
+      "typeVersion": 1,
+      "position": [
+        -16,
+        176
+      ],
+      "id": "YOUR_ID",
+      "name": "Run an Actor in Apify",
+      "credentials": {
+        "apifyOAuth2Api": {
+          "id": "YOUR_CREDENTIAL_ID",
+          "name": "Apify OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "Run actor and get dataset",
+        "actorSource": "store",
+        "actorId": {
+          "__rl": true,
+          "value": "GLe30YgAs5xqzNBQg",
+          "mode": "list",
+          "cachedResultName": "",
+          "cachedResultUrl": ""
+        },
+        "customBody": "{\n    \"enablePriceMonitoring\": false,\n    \"maxConcurrency\": 1,\n    \"maxRequestRetries\": 1,\n    \"minConcurrency\": 5,\n    \"monitoringMode\": false,\n    \"proxy\": {\n        \"useApifyProxy\": true,\n        \"apifyProxyGroups\": [\n            \"RESIDENTIAL\"\n        ],\n        \"apifyProxyCountry\": \"AE\"\n    },\n    \"startUrls\": [\n        \"https://www.bayut.com/for-sale/property/dubai/downtown-dubai/\",\n        \"https://www.bayut.com/for-sale/property/dubai/dubai-hills-estate/\"\n    ]\n}",
+        "authentication": "apifyOAuth2Api"
+      },
+      "type": "@apify/n8n-nodes-apify.apifyTool",
+      "typeVersion": 1,
+      "position": [
+        304,
+        176
+      ],
+      "id": "YOUR_ID",
+      "name": "Run an Actor and get dataset in Apify",
+      "credentials": {
+        "apifyOAuth2Api": {
+          "id": "YOUR_CREDENTIAL_ID",
+          "name": "Apify OAuth2 API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Run an Actor in Apify": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run an Actor and get dataset in Apify": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "YOUR_INSTANCE_ID"
+  }
+}
